@@ -1,10 +1,20 @@
 package com.study.springboot.bean;
 
-public class Member {
-	private String name;
-	private String nickname;
-	private Printer printer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
+public class Member {
+	@Value("엄홍식")
+	private String name;
+	@Value("유아인")
+	private String nickname;
+	@Autowired
+	@Qualifier("printerA")
+	private Printer printer;
+	
 	public Member() {}
 
 	public Member(String name, String nickname, Printer printer) {
