@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy package &apos;com.study.springboot.bean&apos; to &apos;AnnotationDI/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;JavaCodeDI&apos;&#x0D;&#x0A;- Destination element: &apos;AnnotationDI/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;JavaCodeDI/src/main/java/com.study.springboot.bean&apos;" description="Copy package" destination="=AnnotationDI/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/" element1="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.study.springboot.bean" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1613225732553" version="1.0"/>
-</session>
