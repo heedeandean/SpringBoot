@@ -6,5 +6,4 @@ import lombok.Data;
 public class MyUserDTO {
 	private String id;
 	private String name;
-	
 }
