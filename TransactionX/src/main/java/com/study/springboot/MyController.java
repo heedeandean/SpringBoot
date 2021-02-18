@@ -17,7 +17,7 @@ public class MyController {
 
 	@RequestMapping("/")
 	public @ResponseBody String root() throws Exception {
-		return "Transaction X (1)";
+		return "Transaction X";
 	}
 
 	@RequestMapping("/buy_ticket")

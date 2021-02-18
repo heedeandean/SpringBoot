@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.study.springboot.service.IBuyTicketService;
+import com.study.springboot.service.BuyAndLogService;
 
 @Controller
 public class MyController {
 
 	@Autowired
-	IBuyTicketService buyTicket;
-
+	BuyAndLogService buyTicketLog;
+	
 	@RequestMapping("/")
 	public @ResponseBody String root() throws Exception {
-		return "Transaction Manager (프로그래밍적 방법)";
+		return "Transaction Propagation";
 	}
 
 	@RequestMapping("/buy_ticket")
@@ -31,7 +31,7 @@ public class MyController {
 								, @RequestParam("error") String error
 								, Model model) 
 	{
-		int nResult = buyTicket.buy(consumerId, Integer.parseInt(amount), error);
+		int nResult = buyTicketLog.buy(consumerId, Integer.parseInt(amount), error);
 		
 		model.addAttribute("consumerId", consumerId);
 		model.addAttribute("amount", amount);

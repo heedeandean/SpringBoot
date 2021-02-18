@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>BuyTicketError</title>
+<title>Welcome</title>
 </head>
 <body>
-	buy_ticket_error.jsp 입니다. <br />
-	
-	<h1>에러 발생</h1> <br />
-	${consumerId} <br />
-	${amount} <br />
-
+	Welcome : Guest
 </body>
 </html>
