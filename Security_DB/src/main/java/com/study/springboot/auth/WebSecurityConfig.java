@@ -1,5 +1,7 @@
 package com.study.springboot.auth;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,11 +46,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-				.withUser("user").password(passwordEncoder().encode("1234")).roles("USER")
-				.and()
-				.withUser("admin").password(passwordEncoder().encode("1234")).roles("ADMIN");
+	private DataSource dataSource;
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
+//		System.out.println(passwordEncoder().encode("123")); // 테스트용
+		
+		auth.jdbcAuthentication()
+			.dataSource(dataSource)
+			.usersByUsernameQuery("select name as userName, password, enabled" + " from user_list where name = ?")
+			.authoritiesByUsernameQuery("select name as userName, authority" + " from user_list where name = ?")
+			.passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	@Bean
