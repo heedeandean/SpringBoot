@@ -35,7 +35,7 @@ public class MyController {
 			Member member = new Member(loginId, password, nickname, "");
 			userMap.put(loginId, member);
 
-			System.out.println("USER CREATE! : " + userMap.get(loginId));
+			System.out.println("[USER CREATE!] " + userMap.get(loginId));
 			obj.put("success", true);
 
 		} catch (Exception e) {
