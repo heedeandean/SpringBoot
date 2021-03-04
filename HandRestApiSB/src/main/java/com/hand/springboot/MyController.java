@@ -26,7 +26,9 @@ public class MyController {
 	// http://localhost:3000/user?loginId=hello&password=world&nickname=handstudio
 	@PostMapping("/user")
 	public @ResponseBody String postMember(@RequestParam("loginId") String loginId
-					     , @RequestParam("password") String password, @RequestParam("nickname") String nickname) {
+					     , @RequestParam("password") String password
+					     , @RequestParam("nickname") String nickname) 
+	{
 		
 		JSONObject obj = new JSONObject();
 
@@ -49,7 +51,8 @@ public class MyController {
 	// http://localhost:3000/login?loginId=hello&password=world
 	@PostMapping("/login")
 	public @ResponseBody String loginMember(@RequestParam("loginId") String loginId
-					      , @RequestParam("password") String password) {
+					      , @RequestParam("password") String password) 
+	{
 		
 		JSONObject obj = new JSONObject();
 		
@@ -79,7 +82,8 @@ public class MyController {
 	
 	// http://localhost:3000/user?token=123456
 	@GetMapping("/user")
-	public @ResponseBody String getMember(@RequestParam("token") String token) {
+	public @ResponseBody String getMember(@RequestParam("token") String token) 
+	{
 		
 		JSONObject obj = new JSONObject();
 		
