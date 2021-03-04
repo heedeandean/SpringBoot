@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,19 +24,22 @@ public class MyController {
 	}
 
 	
-	// http://localhost:3000/user?loginId=hello&password=world&nickname=handstudio
+	// http://localhost:3000/user
 	@PostMapping("/user")
-	public @ResponseBody String postMember(@RequestParam("loginId") String loginId
-					     , @RequestParam("password") String password
-					     , @RequestParam("nickname") String nickname) {
+	public @ResponseBody String postMember(@RequestBody Map map) {
 		
 		JSONObject obj = new JSONObject();
 
 		try {
-			Member member = new Member(loginId, password, nickname, "");
-			userMap.put(loginId, member);
-
-			System.out.println("[USER CREATE!] " + userMap.get(loginId));
+			
+			Member member = new Member(map.get("loginId").toString()
+									 , map.get("password").toString()
+									 , map.get("nickname").toString()
+									 , "");
+			
+			userMap.put(member.getLoginId(), member);
+			
+			System.out.println("[USER CREATE!] " + member);
 			obj.put("success", true);
 
 		} catch (Exception e) {
@@ -47,20 +51,19 @@ public class MyController {
 	}
 	
 
-	// http://localhost:3000/login?loginId=hello&password=world
+	// http://localhost:3000/login
 	@PostMapping("/login")
-	public @ResponseBody String loginMember(@RequestParam("loginId") String loginId
-					      , @RequestParam("password") String password) {
+	public @ResponseBody String loginMember(@RequestBody Map map) {
 		
 		JSONObject obj = new JSONObject();
 		
 		try {
-			Member member = userMap.get(loginId);
+			Member member = userMap.get(map.get("loginId"));
 
-			if (member.getPassword().equals(password)) {
+			if (member.getPassword().equals(map.get("password"))) {
 				
 				member.setToken("123456");
-
+				
 				obj.put("success", true);
 				obj.put("token", member.getToken());
 			} 
