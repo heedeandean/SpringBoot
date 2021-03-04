@@ -31,7 +31,6 @@ public class MyController {
 		JSONObject obj = new JSONObject();
 
 		try {
-			
 			Member member = new Member(map.get("loginId").toString()
 						 , map.get("password").toString()
 						 , map.get("nickname").toString()
